@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<ActiveMobileDevice>
+		<NoProfile Android64="" Android=""/>
+	</ActiveMobileDevice>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.405,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Cycles.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.077,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Cycles.pas=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Options.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.884,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Cycles.pas=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.928,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.fmx=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\TimePicker.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.736,=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Untitled1.xml</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.650,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Untitled1.xml=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Workouts.xml</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.663,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Options.fmx=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.672,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Cycles.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.663,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Options.pas=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.878,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Main.fmx=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\HeaderFooterTemplate.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.387,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Workouts.pas=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.140,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Utils.pas=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.884,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Cycles.fmx=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.077,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Cycles.fmx=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Options.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.780,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\WorkoutTimer.dproj=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\HeaderFooterApplication.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.891,=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Options.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.878,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Main.pas=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\HeaderFooterTemplate.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.689,=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.364,=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.546,=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.132,=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.497,=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\HeaderFooterApplication.todo</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.387,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Workouts.fmx=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.928,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\TimePicker.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.655,=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.331,=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.727,=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.934,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Data.pas=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\TimerData.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.313,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\AndroidUtils.pas=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Utils.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.243,=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.811,C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Data.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.766,=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.411,=C:\Users\max_w\OneDrive\Documents\Embarcadero\Studio\Projects\TestTimerMP\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

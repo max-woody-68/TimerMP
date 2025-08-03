@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WoodyCycleTimer Version="1.0">
+	<Workouts>
+		<Workout>
+			<Name>Workout 1</Name>
+			<Cycles>
+				<Cycle>
+					<Name>C1</Name>
+					<Steps>
+						<S001>Work</S001>
+						<T001>8</T001>
+						<S002>Rest</S002>
+						<T002>5</T002>
+					</Steps>
+					<Count>2</Count>
+				</Cycle>
+				<Cycle>
+					<Name>C2</Name>
+					<Steps>
+						<S001>Work</S001>
+						<T001>10</T001>
+						<S002>Rest</S002>
+						<T002>5</T002>
+					</Steps>
+					<Count>4</Count>
+				</Cycle>
+				<Cycle>
+					<Name>C3</Name>
+					<Steps>
+						<S001>Work</S001>
+						<T001>10</T001>
+						<S002>Rest</S002>
+						<T002>5</T002>
+					</Steps>
+					<Count>3</Count>
+				</Cycle>
+			</Cycles>
+			<Options>
+				<Countdown>1</Countdown>
+				<WarningType>3</WarningType>
+				<WarningTime>2</WarningTime>
+			</Options>
+		</Workout>
+		<Workout>
+			<Name>Deep breathing</Name>
+			<Cycles>
+				<Cycle>
+					<Name>Make it 99 times</Name>
+					<Steps>
+						<S001>Inhale</S001>
+						<T001>10</T001>
+						<S002>Exhale</S002>
+						<T002>5</T002>
+						<S003>Pause</S003>
+						<T003>5</T003>
+					</Steps>
+					<Count>99</Count>
+				</Cycle>
+			</Cycles>
+			<Options>
+				<Countdown>0</Countdown>
+				<WarningType>3</WarningType>
+				<WarningTime>2</WarningTime>
+			</Options>
+		</Workout>
+	</Workouts>
+</WoodyCycleTimer>

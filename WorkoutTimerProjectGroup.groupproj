@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{ADFD37F2-A32E-431F-B94B-A9BBBE760F17}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="WorkoutTimer.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="WorkoutTimer">
+        <MSBuild Projects="WorkoutTimer.dproj"/>
+    </Target>
+    <Target Name="WorkoutTimer:Clean">
+        <MSBuild Projects="WorkoutTimer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WorkoutTimer:Make">
+        <MSBuild Projects="WorkoutTimer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="WorkoutTimer"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="WorkoutTimer:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="WorkoutTimer:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,407 @@
+object fOptions: TfOptions
+  Left = 0
+  Top = 0
+  ClientHeight = 567
+  ClientWidth = 384
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 3
+  object pMain: TPanel
+    Align = Client
+    Size.Width = 384.000000000000000000
+    Size.Height = 567.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 164
+    object BlurEffect1: TBlurEffect
+      Softness = 0.500000000000000000
+      Enabled = False
+    end
+    object btnCancel: TButton
+      ModalResult = 2
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'backtoolbutton'
+      TabOrder = 4
+      TextSettings.Trimming = None
+    end
+    object btnOk: TButton
+      Anchors = [akTop, akRight]
+      ModalResult = 1
+      Position.X = 336.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'donetoolbutton'
+      TabOrder = 2
+      TextSettings.Trimming = None
+      OnClick = btnOkClick
+    end
+    object btnSave: TButton
+      Anchors = [akTop, akRight]
+      Position.X = 336.000000000000000000
+      Position.Y = 38.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'organizetoolbutton'
+      TabOrder = 0
+      TextSettings.Trimming = None
+      OnClick = btnSaveClick
+    end
+    object btnWorkouts: TButton
+      Anchors = [akTop, akRight]
+      Position.X = 287.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'drawertoolbutton'
+      TabOrder = 1
+      TextSettings.Trimming = None
+      OnClick = btnWorkoutsClick
+    end
+    object ebName: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Anchors = [akLeft, akTop, akRight]
+      TabOrder = 3
+      Position.X = 73.000000000000000000
+      Position.Y = 50.000000000000000000
+      Size.Width = 262.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object lblName: TLabel
+      AutoSize = True
+      Position.X = 16.000000000000000000
+      Position.Y = 56.000000000000000000
+      Size.Width = 65.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Name'
+      TabOrder = 169
+    end
+    object pOptList: TPanel
+      Align = Bottom
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      Position.Y = 94.000000000000000000
+      Size.Width = 384.000000000000000000
+      Size.Height = 473.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 170
+      object pOpt: TPanel
+        Align = Top
+        ClipChildren = True
+        Size.Width = 384.000000000000000000
+        Size.Height = 200.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object lblWarnings: TLabel
+          AutoSize = True
+          Position.X = 16.000000000000000000
+          Position.Y = 41.000000000000000000
+          Size.Width = 105.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Warnings'
+          TabOrder = 12
+        end
+        object sbWarningTime: TSpinBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          OnTap = sbWarningTimeTap
+          StyleLookup = 'sbWarningTimeStyle1'
+          TabOrder = 176
+          Cursor = crIBeam
+          Min = 1.000000000000000000
+          Max = 10.000000000000000000
+          Value = 2.000000000000000000
+          DisableFocusEffect = True
+          RepeatClick = True
+          Position.X = 129.000000000000000000
+          Position.Y = 75.000000000000000000
+          Size.Width = 90.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          OnChange = sbWarningTimeChange
+        end
+        object cbxWarnings: TComboBox
+          Items.Strings = (
+            'None'
+            'Beeps'
+            'Single warning')
+          ItemIndex = 0
+          Position.X = 129.000000000000000000
+          Position.Y = 35.000000000000000000
+          Size.Width = 247.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 180
+          OnChange = cbxWarningsChange
+        end
+        object lblSec: TLabel
+          AutoSize = True
+          Position.X = 227.000000000000000000
+          Position.Y = 81.000000000000000000
+          Size.Width = 20.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          Text = 's'
+          TabOrder = 6
+        end
+        object cbxTimeFormat: TComboBox
+          Enabled = False
+          Items.Strings = (
+            'Min:Sec'
+            'Sec only')
+          ItemIndex = 0
+          Position.X = 129.000000000000000000
+          Position.Y = 145.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 177
+        end
+        object lblTimeFormat: TLabel
+          AutoSize = True
+          Enabled = False
+          Position.X = 16.000000000000000000
+          Position.Y = 150.000000000000000000
+          Size.Width = 121.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Time format'
+          TabOrder = 7
+        end
+        object lblScreenOn: TLabel
+          AutoSize = True
+          Position.X = 16.000000000000000000
+          Position.Y = 182.000000000000000000
+          Size.Width = 169.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Screen always on'
+          TabOrder = 11
+        end
+        object swScreenOn: TSwitch
+          Anchors = [akTop, akRight]
+          IsChecked = False
+          Position.X = 324.000000000000000000
+          Position.Y = 184.000000000000000000
+          TabOrder = 182
+        end
+        object lblCountdown: TLabel
+          AutoSize = True
+          Position.X = 16.000000000000000000
+          Position.Y = 8.000000000000000000
+          Size.Width = 169.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Countdown'
+          TabOrder = 8
+        end
+        object swCountdown: TSwitch
+          Anchors = [akTop, akRight]
+          IsChecked = False
+          Position.X = 324.000000000000000000
+          Position.Y = 4.000000000000000000
+          TabOrder = 178
+        end
+        object lblSkipLastStep: TLabel
+          AutoSize = True
+          Position.X = 16.000000000000000000
+          Position.Y = 214.000000000000000000
+          Size.Width = 203.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Skip last step in cycle'
+          TabOrder = 9
+        end
+        object swSkipLastStep: TSwitch
+          Anchors = [akTop, akRight]
+          IsChecked = False
+          Position.X = 324.000000000000000000
+          Position.Y = 216.000000000000000000
+          TabOrder = 179
+        end
+        object lblFlash: TLabel
+          AutoSize = True
+          Position.X = 16.000000000000000000
+          Position.Y = 118.000000000000000000
+          Size.Width = 231.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Flash between steps'
+          TabOrder = 10
+        end
+        object swFlash: TSwitch
+          Anchors = [akTop, akRight]
+          IsChecked = False
+          Position.X = 324.000000000000000000
+          Position.Y = 120.000000000000000000
+          TabOrder = 181
+        end
+      end
+      object Splitter1: TSplitter
+        Align = Top
+        Cursor = crVSplit
+        MinSize = 20.000000000000000000
+        Position.Y = 200.000000000000000000
+        Size.Width = 384.000000000000000000
+        Size.Height = 10.000000000000000000
+        Size.PlatformDefault = False
+        object Rectangle2: TRectangle
+          StyleName = 'Android'
+          Fill.Kind = None
+          Locked = True
+          Position.X = 3.000000000000000000
+          Position.Y = 3.000000000000000000
+          Size.Width = 382.000000000000000000
+          Size.Height = 4.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claSlategray
+        end
+      end
+      object pList: TPanel
+        Align = Client
+        ClipChildren = True
+        Size.Width = 384.000000000000000000
+        Size.Height = 263.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        object btnDelete: TButton
+          Anchors = [akTop, akRight]
+          Position.X = 336.000000000000000000
+          Position.Y = 64.000000000000000000
+          Size.Width = 48.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'deleteitembutton'
+          TabOrder = 0
+          TextSettings.Trimming = None
+          OnClick = btnDeleteClick
+        end
+        object btnInsert: TButton
+          Anchors = [akTop, akRight]
+          Position.X = 336.000000000000000000
+          Position.Y = 8.000000000000000000
+          Size.Width = 48.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'additembutton'
+          TabOrder = 1
+          TextSettings.Trimming = None
+          OnClick = btnInsertClick
+        end
+        object tvCycles: TTreeView
+          Anchors = [akLeft, akTop, akRight, akBottom]
+          Position.X = 8.000000000000000000
+          Position.Y = 8.000000000000000000
+          Size.Width = 327.000000000000000000
+          Size.Height = 247.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Viewport.Width = 327.000000000000000000
+          Viewport.Height = 247.000000000000000000
+        end
+      end
+    end
+  end
+  object pMask: TPanel
+    Align = Client
+    Size.Width = 384.000000000000000000
+    Size.Height = 567.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+    TabOrder = 165
+    object lvSetTime: TListView
+      ItemAppearanceClassName = 'TListItemAppearance'
+      ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+      HeaderAppearanceClassName = 'TListHeaderObjects'
+      FooterAppearanceClassName = 'TListHeaderObjects'
+      Position.X = 216.000000000000000000
+      Position.Y = 67.000000000000000000
+      Size.Width = 140.000000000000000000
+      Size.Height = 135.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object Rectangle1: TRectangle
+        StyleName = 'Android'
+        Anchors = [akLeft, akTop, akRight, akBottom]
+        Fill.Kind = None
+        Size.Width = 140.000000000000000000
+        Size.Height = 135.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claSlategray
+        object btnTOk: TButton
+          Anchors = [akRight, akBottom]
+          Position.X = 91.000000000000000000
+          Position.Y = 87.000000000000000000
+          Size.Width = 48.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'donetoolbutton'
+          TabOrder = 1
+          TextSettings.Trimming = None
+          OnClick = btnTOkClick
+        end
+        object lMin: TLabel
+          Position.X = 112.000000000000000000
+          Position.Y = 8.000000000000000000
+          Size.Width = 25.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'm'
+          TabOrder = 5
+        end
+        object lSec: TLabel
+          Position.X = 112.000000000000000000
+          Position.Y = 47.000000000000000000
+          Size.Width = 25.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          Text = 's'
+          TabOrder = 4
+        end
+        object sbMin: TSpinBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 2
+          Cursor = crIBeam
+          Max = 239.000000000000000000
+          CanFocus = False
+          RepeatClick = True
+          Position.X = 8.000000000000000000
+          Position.Y = 8.000000000000000000
+        end
+        object sbSec: TSpinBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 3
+          Cursor = crIBeam
+          Max = 59.000000000000000000
+          CanFocus = False
+          RepeatClick = True
+          Position.X = 8.000000000000000000
+          Position.Y = 48.000000000000000000
+        end
+        object btnTCancel: TButton
+          Anchors = [akLeft, akBottom]
+          Position.Y = 88.000000000000000000
+          Size.Width = 48.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'backtoolbutton'
+          TabOrder = 0
+          TextSettings.Trimming = None
+          OnClick = btnTCancelClick
+        end
+      end
+      object ShadowEffect1: TShadowEffect
+        Distance = 3.000000000000000000
+        Direction = 45.000000000000000000
+        Softness = 0.300000011920929000
+        Opacity = 0.200000002980232200
+        ShadowColor = claBlack
+      end
+    end
+  end
+end

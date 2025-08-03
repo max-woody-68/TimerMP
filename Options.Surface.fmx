@@ -1,0 +1,22 @@
+inherited fOptions_Surface: TfOptions_Surface
+  ClientHeight = 1920
+  ClientWidth = 1080
+  DesignerMasterStyle = 3
+  inherited btnCancel: TButton
+    TabOrder = 16
+  end
+  inherited cbCountDown: TCheckBox
+    TabOrder = 11
+  end
+  inherited lblName: TLabel
+    Size.Height = 16.000000000000000000
+    TabOrder = 180
+  end
+  inherited lblWarnings: TLabel
+    Size.Height = 16.000000000000000000
+  end
+  inherited tvCycles: TTreeView
+    Viewport.Width = 323.000000000000000000
+    Viewport.Height = 306.000000000000000000
+  end
+end

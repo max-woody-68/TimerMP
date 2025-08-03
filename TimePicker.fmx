@@ -1,0 +1,86 @@
+object fTimePicker: TfTimePicker
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 245
+  ClientWidth = 215
+  Position = Default
+  FormStyle = StayOnTop
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 3
+  object HeaderLabel: TLabel
+    Align = MostTop
+    Size.Width = 215.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'toollabel'
+    Text = '   Step time'
+    TabOrder = 0
+  end
+  object lSec: TLabel
+    Position.X = 112.000000000000000000
+    Position.Y = 49.000000000000000000
+    Size.Width = 25.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    Text = 's'
+    TabOrder = 3
+    object sbSec: TSpinBox
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 4
+      Cursor = crIBeam
+      Max = 60.000000000000000000
+      Position.X = -105.000000000000000000
+    end
+  end
+  object lMin: TLabel
+    Position.X = 112.000000000000000000
+    Position.Y = 89.000000000000000000
+    Size.Width = 25.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'm'
+    TabOrder = 2
+    object sbMin: TSpinBox
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 4
+      Cursor = crIBeam
+      Max = 60.000000000000000000
+      Position.X = -105.000000000000000000
+    end
+  end
+  object lHour: TLabel
+    Position.X = 112.000000000000000000
+    Position.Y = 129.000000000000000000
+    Size.Width = 25.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'h'
+    TabOrder = 1
+    object smHour: TSpinBox
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 4
+      Cursor = crIBeam
+      Max = 24.000000000000000000
+      Position.X = -105.000000000000000000
+    end
+  end
+  object bOk: TButton
+    ModalResult = 1
+    Position.X = 134.000000000000000000
+    Position.Y = 184.000000000000000000
+    TabOrder = 4
+    Text = 'OK'
+    TextSettings.Trimming = None
+  end
+  object bCancel: TButton
+    ModalResult = 2
+    Position.X = 48.000000000000000000
+    Position.Y = 184.000000000000000000
+    TabOrder = 5
+    Text = 'Cancel'
+    TextSettings.Trimming = None
+  end
+end

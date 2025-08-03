@@ -1,0 +1,82 @@
+object fWorkouts: TfWorkouts
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 567
+  ClientWidth = 384
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnShow = FormShow
+  DesignerMasterStyle = 3
+  object btnOk: TButton
+    Anchors = [akTop, akRight]
+    ModalResult = 1
+    Position.X = 336.000000000000000000
+    Size.Width = 48.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'donetoolbutton'
+    TabOrder = 5
+    TextSettings.Trimming = None
+  end
+  object btnCancel: TButton
+    ModalResult = 2
+    Size.Width = 48.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'backtoolbutton'
+    TabOrder = 9
+    TextSettings.Trimming = None
+  end
+  object tvWorkouts: TTreeView
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Position.X = 8.000000000000000000
+    Position.Y = 56.000000000000000000
+    Size.Width = 368.000000000000000000
+    Size.Height = 503.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    OnClick = tvWorkoutsClick
+    Viewport.Width = 368.000000000000000000
+    Viewport.Height = 503.000000000000000000
+  end
+  object btnEdit: TButton
+    Anchors = [akTop, akRight]
+    ModalResult = 1
+    Position.X = 284.000000000000000000
+    Position.Y = 112.000000000000000000
+    Size.Width = 48.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'composetoolbutton'
+    TabOrder = 4
+    TextSettings.Trimming = None
+    Visible = False
+    OnClick = btnEditClick
+  end
+  object btnDelete: TButton
+    Anchors = [akTop, akRight]
+    Position.X = 328.000000000000000000
+    Position.Y = 112.000000000000000000
+    Size.Width = 48.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'trashtoolbutton'
+    TabOrder = 3
+    TextSettings.Trimming = None
+    Visible = False
+    OnClick = btnDeleteClick
+  end
+  object HeaderLabel: TLabel
+    Align = Top
+    Size.Width = 384.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'toollabel'
+    TextSettings.HorzAlign = Center
+    Text = 'Workouts'
+    TabOrder = 175
+  end
+end
