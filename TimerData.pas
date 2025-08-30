@@ -1,4 +1,4 @@
-unit TimerData;
+ unit TimerData;
 
 interface
 
@@ -110,6 +110,12 @@ begin
   nCurNode.Text := IntToStr(Integer(woOptions.wWarning));
   nCurNode := nOptionsNode.AddChild('WarningTime');
   nCurNode.Text := woOptions.sWarningTime;
+  nCurNode := nOptionsNode.AddChild('TimeFormat');
+  nCurNode.Text := IntToStr(Ord(woOptions.tfTimeFormat));
+  nCurNode := nOptionsNode.AddChild('ScreenOn');
+  if woOptions.bScreenOn
+  then nCurNode.Text := '1'
+  else nCurNode.Text := '0';
   nCurNode := nOptionsNode.AddChild('SkipLastStep');
   if woOptions.bSkipLastStep
   then nCurNode.Text := '1'
@@ -150,6 +156,8 @@ begin
   result.bCountDown := (nOptionstNode.ChildNodes['Countdown'].Text <> '0');
   result.wWarning := TWarningType(StrToInt(nOptionstNode.ChildNodes['WarningType'].Text));
   result.sWarningTime := nOptionstNode.ChildNodes['WarningTime'].Text;
+  result.tfTimeFormat := TTimeFormat(StrToInt(nOptionstNode.ChildNodes['TimeFormat'].Text));
+  result.bScreenOn := (nOptionstNode.ChildNodes['ScreenOn'].Text <> '0');
   result.bSkipLastStep := (nOptionstNode.ChildNodes['SkipLastStep'].Text <> '0');
 end;
 

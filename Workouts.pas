@@ -106,6 +106,8 @@ begin
     cbxWarnings.ItemIndex := integer(woOptions.wWarning);
     cbxWarningsChange(Sender);
     sbWarningTime.Text := woOptions.sWarningTime;
+    cbxTimeFormat.ItemIndex := Ord(woOptions.tfTimeFormat);
+    swScreenOn.IsChecked := woOptions.bScreenOn;
 
     tvCycles.EndUpdate;
   end;

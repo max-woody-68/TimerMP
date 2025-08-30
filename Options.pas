@@ -312,13 +312,16 @@ procedure TfOptions.btnDeleteClick(Sender: TObject);
 var
   iI: integer;
 begin
-  tvCycles.BeginUpdate;
-  if tvCycles.Selected = nil
-  then tvCycles.Items[tvCycles.Count - 1].Select;
-  for iI := tvCycles.Selected.Count - 1  downto 0 do
-    tvCycles.Selected.RemoveObject(iI);
-  tvCycles.RemoveObject(tvCycles.Selected);
-  tvCycles.EndUpdate;
+  if tvCycles.Count > 0 then
+  begin
+    tvCycles.BeginUpdate;
+    if tvCycles.Selected = nil
+    then tvCycles.Items[tvCycles.Count - 1].Select;
+    for iI := tvCycles.Selected.Count - 1  downto 0 do
+      tvCycles.Selected.RemoveObject(iI);
+    tvCycles.RemoveObject(tvCycles.Selected);
+    tvCycles.EndUpdate;
+  end;
 end;
 
 procedure TfOptions.AddWorkout(nRootNode: IXMLNode);
@@ -349,6 +352,8 @@ begin
   woOptions.wWarning := TWarningType(fOptions.Tag);
   woOptions.sWarningTime := sbWarningTime.Text;
   woOptions.bSkipLastStep := swSkipLastStep.IsChecked;
+  woOptions.tfTimeFormat := TTimeFormat(cbxTimeFormat.ItemIndex);
+  woOptions.bScreenOn := swScreenOn.IsChecked;
   AddWorkoutOptions(nRootNode, woOptions);
 
   xmlSettings.SaveToFile(csWorkoutsXML);
@@ -439,6 +444,7 @@ begin
   fMain.btnStart.StyleLookup := 'playtoolbutton';
   fMain.pbTotal.Value := 0;
   fMain.pbTotal.Max := rTimerData.iFullTime;
+  fMain.pbStep.Max  := rTimerData.arSteps[0].iTime;
 end;
 
 

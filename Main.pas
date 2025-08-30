@@ -32,9 +32,9 @@ type
     Timer1: TTimer;
     btnOptions: TButton;
     StyleBook1: TStyleBook;
+    pbStep: TProgressBar;
     pbTotal: TProgressBar;
     MediaPlayer1: TMediaPlayer;
-    pbStep: TProgressBar;
     procedure Button1Click(Sender: TObject);
     procedure btnResetClick(Sender: TObject);
     procedure btnStartClick(Sender: TObject);
@@ -206,6 +206,14 @@ var
   iShowTime: integer;
 begin
   Inc(iTime);
+  if iTime = 1 then
+  begin
+    pbStep.Max   := rTimerData.arSteps[iStep].iTime;
+      pbStep.Value  := 1;
+  end
+  else begin
+    pbStep.Value  := pbStep.Value  + 1;
+  end;
   pbTotal.Value := pbTotal.Value + 1;
   if fOptions.swCountdown.IsChecked
   then iShowTime := rTimerData.arSteps[iStep].iTime - iTime
