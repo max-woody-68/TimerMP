@@ -20,7 +20,13 @@ begin
   Volume := TJToneGenerator.JavaClass.MAX_VOLUME;
   StreamType := TJAudioManager.JavaClass.STREAM_ALARM;
   ToneGenerator := TJToneGenerator.JavaClass.init(StreamType, Volume);
-  ToneGenerator.startTone(iToneType, iDuration);
+  try
+    if ToneGenerator <> nil then
+      ToneGenerator.startTone(iToneType, iDuration);     // Обернуто в try/finally по рекомендации Codex
+  finally
+    if ToneGenerator <> nil then
+      ToneGenerator.release;
+  end;
 end;
 
 {$ELSE}
