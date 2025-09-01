@@ -72,7 +72,7 @@ type
   private
     procedure RemoveZeroTimes();
     function SetSteps(): integer;
-    procedure AddWorkout(nRootNode: IXMLNode);
+    procedure AddWorkout(nRootNode: IXMLNode; sFileName: string);
   public
     { Public declarations }
   end;
@@ -215,7 +215,7 @@ begin
   FebName.Width := 138;
 
   OnTap1.Code := @TTimeNode.onTap;
-  OnTap1.Data := nil;
+  OnTap1.Data := Self;
 
   FteTime := TTimeEditWOPicker.Create(Self);
   Self.AddObject(FteTime);
@@ -324,7 +324,7 @@ begin
   end;
 end;
 
-procedure TfOptions.AddWorkout(nRootNode: IXMLNode);
+procedure TfOptions.AddWorkout(nRootNode: IXMLNode; sFileName: string);
 var
   iI, iJ: integer;
   cCycle: TCycle;
@@ -349,14 +349,14 @@ begin
   end;
 
   woOptions.bCountDown := swCountdown.IsChecked;
-  woOptions.wWarning := TWarningType(fOptions.Tag);
+  woOptions.wWarning := TWarningType(cbxWarnings.ItemIndex);
   woOptions.sWarningTime := sbWarningTime.Text;
   woOptions.bSkipLastStep := swSkipLastStep.IsChecked;
   woOptions.tfTimeFormat := TTimeFormat(cbxTimeFormat.ItemIndex);
   woOptions.bScreenOn := swScreenOn.IsChecked;
   AddWorkoutOptions(nRootNode, woOptions);
 
-  xmlSettings.SaveToFile(csWorkoutsXML);
+  xmlSettings.SaveToFile(sFileName);
 end;
 
 procedure TfOptions.btnInsertClick(Sender: TObject);
@@ -366,50 +366,55 @@ var
   iNum, iPos: integer;
   bAddCycle: boolean;
 begin
-  tvCycles.BeginUpdate;
+  try
+    tvCycles.BeginUpdate;
 
-  if tvCycles.Selected = nil                  // Ничего не выбрано?
-  then begin                                  // Добавляем цикл в конец
-    bAddCycle := True;
-    iPos := tvCycles.Count;
-  end
-  else begin
-    if tvCycles.Selected.ParentItem = nil     // Родитель выбранной строки - сам список (выбрана строка с циклом)?
-    then begin                                // Добавляем цикл после выбранного
+    if tvCycles.Selected = nil                  // Ничего не выбрано?
+    then begin                                  // Добавляем цикл в конец
       bAddCycle := True;
-      iPos := tvCycles.Selected.Index + 1;
+      iPos := tvCycles.Count;
     end
-    else begin                                // Родитель выбранной строки - не список (выбрана строка с шагом)?
-      bAddCycle := False;                     // Добавляем шаг после выбранного
-      iPos := tvCycles.Selected.Index + 1;
+    else begin
+      if tvCycles.Selected.ParentItem = nil     // Родитель выбранной строки - сам список (выбрана строка с циклом)?
+      then begin                                // Добавляем цикл после выбранного
+        bAddCycle := True;
+        iPos := tvCycles.Selected.Index + 1;
+      end
+      else begin                                // Родитель выбранной строки - не список (выбрана строка с шагом)?
+        bAddCycle := False;                     // Добавляем шаг после выбранного
+        iPos := tvCycles.Selected.Index + 1;
+      end;
     end;
+
+    if bAddCycle
+    then begin                                 // Добавляем цикл
+      iNum := tvCycles.Count + 1;
+      tviCount := TCycleNode.Create(tvCycles, Format('Cycle %.2d', [iNum]));
+      tvCycles.InsertObject(iPos, tviCount);
+
+      tviTime := TTimeNode.Create(tvCycles, StrToTime('00:00:10'), 'Step 1');
+      tviCount.AddObject(tviTime);
+      tviTime := TTimeNode.Create(tvCycles, StrToTime('00:00:05'), 'Step 2');
+      tviCount.AddObject(tviTime);
+
+      tviCount.Expand;
+    end
+    else begin                                 // Добавляем шаг
+      tviCount := tvCycles.Selected.ParentItem as TCycleNode;
+      iNum := tviCount.Count + 1;
+      tviTime := TTimeNode.Create(tvCycles, StrToTime('00:00:10'), Format('Step %.2d', [iNum]));
+      tviCount.InsertObject(iPos, tviTime);
+    end;
+    tvCycles.EndUpdate;
+  finally
+    //
   end;
-
-  if bAddCycle
-  then begin                                 // Добавляем цикл
-    iNum := tvCycles.Count + 1;
-    tviCount := TCycleNode.Create(tvCycles, Format('Cycle %.2d', [iNum]));
-    tvCycles.InsertObject(iPos, tviCount);
-
-    tviTime := TTimeNode.Create(tvCycles, StrToTime('00:00:10'), 'Step 1');
-    tviCount.AddObject(tviTime);
-    tviTime := TTimeNode.Create(tvCycles, StrToTime('00:00:05'), 'Step 2');
-    tviCount.AddObject(tviTime);
-
-    tviCount.Expand;
-  end
-  else begin                                 // Добавляем шаг
-    tviCount := tvCycles.Selected.ParentItem as TCycleNode;
-    iNum := tviCount.Count + 1;
-    tviTime := TTimeNode.Create(tvCycles, StrToTime('00:00:10'), Format('Step %.2d', [iNum]));
-    tviCount.InsertObject(iPos, tviTime);
-  end;
-  tvCycles.EndUpdate;
 end;
 
 procedure TfOptions.btnOkClick(Sender: TObject);
 var
   iI: integer;
+  nRootNode: IXMLNode;
 begin
   InitTimerData(tvCycles.Count);
 
@@ -432,19 +437,27 @@ begin
   fMain.lCurrentStep.Text := fMain.StepCaption(0, 'Now:');
   fMain.lNextStep.Text := fMain.StepCaption(1, 'Next:');
   fMain.btnStart.Enabled := True;
-  fMain.btnSkip.Enabled := True;
+  fMain.btnSkip.Enabled  := True;
   fMain.btnReset.Enabled := True;
 
   if swCountdown.IsChecked
-  then fMain.lTime.Text := Format('%.2d:%.2d', [rTimerData.arSteps[0].iTime div 60, rTimerData.arSteps[0].iTime mod 60])
-  else fMain.lTime.Text := '00:00';
+  then fMain.lTime.Text  := Format('%.2d:%.2d', [rTimerData.arSteps[0].iTime div 60, rTimerData.arSteps[0].iTime mod 60])
+  else fMain.lTime.Text  := '00:00';
   iStep := 0;
   iTime := 0;
   fMain.Timer1.Enabled := False;
   fMain.btnStart.StyleLookup := 'playtoolbutton';
-  fMain.pbTotal.Value := 0;
-  fMain.pbTotal.Max := rTimerData.iFullTime;
-  fMain.pbStep.Max  := rTimerData.arSteps[0].iTime;
+  fMain.pbTotal.Value   := 0;
+  fMain.pbTotal.Max     := rTimerData.iFullTime;
+  fMain.pbStep.Value    := 0;
+  fMain.pbStep.Max      := rTimerData.arSteps[0].iTime;
+
+  // Запишем выбранную тренировку, чтобы в следующий раз начать с нее
+  xmlSettings.LoadFromFile(csLastWorkoutXML);
+  nRootNode := xmlSettings.DocumentElement.ChildNodes[0];
+  nRootNode.ChildNodes.Delete(0);
+  AddWorkout(nRootNode, csLastWorkoutXML);
+
 end;
 
 
@@ -469,7 +482,7 @@ begin
                                       if AResult = mrYes
                                       then begin
                                         nRootNode.ChildNodes.Delete(iI);
-                                        AddWorkout(nRootNode);
+                                        AddWorkout(nRootNode,csWorkoutsXML);
                                       end;
                                    end);
 
@@ -487,7 +500,7 @@ begin
   end;
 
   if bAddWorkout
-  then AddWorkout(nRootNode);
+  then AddWorkout(nRootNode, csWorkoutsXML);
 end;
 
 procedure TfOptions.btnWorkoutsClick(Sender: TObject);

@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Edit, FMX.ListView.Types,
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,
-  FMX.Layouts, FMX.TreeView, XML.XMLDoc, XML.xmldom, XML.XMLIntf,
+  FMX.Layouts, FMX.TreeView, XML.XMLDoc, XML.xmldom, XML.XMLIntf, FMX.DialogService,
   TimerData;
 
 type
@@ -69,47 +69,59 @@ var
 begin
   with fOptions do
   begin
-    tvCycles.BeginUpdate;
+    try
+      tvCycles.BeginUpdate;
+      // Удаляем старый список перед обновлением
+      for iI := tvCycles.Count - 1 downto 0 do
+        tvCycles.RemoveObject(tvCycles.Items[iI]);
 
-    // Удаляем старый список перед обновлением
-    for iI := tvCycles.Count - 1 downto 0 do
-      tvCycles.RemoveObject(tvCycles.Items[iI]);
-
-    xmlSettings.LoadFromFile(csWorkoutsXML);
-    nRootNode := xmlSettings.DocumentElement.ChildNodes[0].ChildNodes[(Sender as TButton).Tag];
-
-    // Загрузим имя тренировки
-    ebName.Text := GetWorkoutName(nRootNode);
-
-    // Загрузим циклы
-    for iI := 0 to nRootNode.ChildNodes['Cycles'].ChildNodes.Count - 1 do
-    begin
-      cCycle := GetWorkoutCycle(nRootNode, iI);
-
-      tviCount := TCycleNode.Create(tvCycles, cCycle.sName);
-      tvCycles.AddObject(tviCount);
-
-      for iJ := 0 to Length(cCycle.arSteps) - 1 do
-      begin
-        iTime := StrToInt(cCycle.arSteps[iJ].sTime);
-        sTime := Format('%.2d:%.2d:%.2d', [iTime div 3600, iTime mod 3600 div 60, iTime mod 60]);
-        tviTime := TTimeNode.Create(tvCycles, StrToTime(sTime), cCycle.arSteps[iJ].sName);
-        tviCount.AddObject(tviTime);
+      if Sender is TfWorkouts
+      then begin
+        xmlSettings.LoadFromFile(csLastWorkoutXML);
+        nRootNode := xmlSettings.DocumentElement.ChildNodes[0].ChildNodes[0];
+      end
+      else begin
+        xmlSettings.LoadFromFile(csWorkoutsXML);
+        nRootNode := xmlSettings.DocumentElement.ChildNodes[0].ChildNodes[(Sender as TButton).Tag];
       end;
-      tviCount.sbCount.Text := cCycle.sCount;
-      tviCount.Expand;
+
+      // Загрузим имя тренировки
+      ebName.Text := GetWorkoutName(nRootNode);
+
+      // Загрузим циклы
+      for iI := 0 to nRootNode.ChildNodes['Cycles'].ChildNodes.Count - 1 do
+      begin
+        cCycle := GetWorkoutCycle(nRootNode, iI);
+
+        tviCount := TCycleNode.Create(tvCycles, cCycle.sName);
+        tvCycles.AddObject(tviCount);
+
+        for iJ := 0 to Length(cCycle.arSteps) - 1 do
+        begin
+          iTime := StrToInt(cCycle.arSteps[iJ].sTime);
+          sTime := Format('%.2d:%.2d:%.2d', [iTime div 3600, iTime mod 3600 div 60, iTime mod 60]);
+          tviTime := TTimeNode.Create(tvCycles, StrToTime(sTime), cCycle.arSteps[iJ].sName);
+          tviCount.AddObject(tviTime);
+        end;
+        tviCount.sbCount.Text := cCycle.sCount;
+        tviCount.Expand;
+      end;
+
+      // Загрузим опции
+      woOptions := GetWorkoutOptions(nRootNode);
+      swCountdown.IsChecked := woOptions.bCountDown;
+      cbxWarnings.ItemIndex := integer(woOptions.wWarning);
+      cbxWarningsChange(Sender);
+      sbWarningTime.Text := woOptions.sWarningTime;
+      cbxTimeFormat.ItemIndex := Ord(woOptions.tfTimeFormat);
+      swScreenOn.IsChecked := woOptions.bScreenOn;
+      swSkipLastStep.IsChecked := woOptions.bSkipLastStep;
+
+      tvCycles.EndUpdate;
+    finally
+      if Sender is TfWorkouts
+      then fOptions.btnOkClick(Sender);
     end;
-
-    // Загрузим опции
-    woOptions := GetWorkoutOptions(nRootNode);
-    swCountdown.IsChecked := woOptions.bCountDown;
-    cbxWarnings.ItemIndex := integer(woOptions.wWarning);
-    cbxWarningsChange(Sender);
-    sbWarningTime.Text := woOptions.sWarningTime;
-    cbxTimeFormat.ItemIndex := Ord(woOptions.tfTimeFormat);
-    swScreenOn.IsChecked := woOptions.bScreenOn;
-
-    tvCycles.EndUpdate;
   end;
 end;
 
@@ -128,9 +140,10 @@ end;
 procedure TfWorkouts.FormCreate(Sender: TObject);
 begin
   xmlSettings := NewXMLDocument;
+  btnEditClick(Sender);
 end;
 
-procedure TfWorkouts.FillTreeView();
+procedure TfWorkouts.FillTreeView();   // Здесь специально показывается не вся тренировка, а только "начало", иначе отображение было бы слишком громоздким
 var
   tviWorkout: TMainNode;
   iI, iJ, iSteps: integer;
@@ -197,7 +210,7 @@ end;
 
 constructor TMainNode.Create(Owner: TComponent; sName, sInfo: string; iTag: integer);
 var
-  mEditOnClick, mDeleteOnClick: TMethod;
+  mEditOnClick, mDeleteOnClick: TMethod;           // Это обработчики событий динамически создаваемого компонента
 begin
    mEditOnClick.Code := @TfWorkouts.btnEditClick;
    mEditOnClick.Data := nil;

@@ -35,7 +35,6 @@ type
     pbStep: TProgressBar;
     pbTotal: TProgressBar;
     MediaPlayer1: TMediaPlayer;
-    procedure Button1Click(Sender: TObject);
     procedure btnResetClick(Sender: TObject);
     procedure btnStartClick(Sender: TObject);
     procedure btnSkipClick(Sender: TObject);
@@ -164,11 +163,6 @@ begin
   {$ENDIF}
 end;
 
-procedure TfMain.Button1Click(Sender: TObject);
-begin
-//
-end;
-
 procedure TfMain.btnOptionsClick(Sender: TObject);
 begin
   {$IFDEF ANDROID}
@@ -233,6 +227,7 @@ begin
       lCurrentStep.Text := rTimerData.arSteps[Length(rTimerData.arSteps) - 2].sName;
       lNextStep.Text := '';
       KeepScreenOn(False);
+      fOptions.btnOkClick(Sender);
     end
     else begin
       PlayStepFinished;

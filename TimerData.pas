@@ -65,6 +65,7 @@ procedure InitTimerData(iCycles: integer);
 var
   rTimerData: TTimerData;
   csWorkoutsXML: string;
+  csLastWorkoutXML: string;
 
 implementation
 
@@ -165,7 +166,7 @@ procedure InitTimerData(iCycles: integer);
 begin
   with rTimerData do
   begin
-    iCycles := iCycles;
+    rTimerData.iCycles := iCycles;
     iFullTime := 0;
     iSteps := 0;
     iCurrentCycle := 0;

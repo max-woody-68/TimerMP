@@ -265,8 +265,9 @@
             <Form>fTimePicker</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <None Include="Workouts.xml"/>
+        <None Include="LastWorkout.xml"/>
         <None Include="WorkoutTimer.todo"/>
+        <None Include="Workouts.xml"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -790,6 +791,12 @@
                     <Platform Name="Android64">
                         <RemoteDir>.\assets\internal\</RemoteDir>
                         <RemoteName>Finish01.mp3</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="LastWorkout.xml" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Android64">
+                        <RemoteDir>.\assets\internal\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

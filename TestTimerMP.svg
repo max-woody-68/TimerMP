@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <g fill="none" stroke="none">
+    <!-- Outer arrow arc (centered on stopwatch) -->
+    <path d="M 4.14,10.00 A 16,16 0 0 1 31.11,8.82"
+          fill="none" stroke="#000" stroke-width="3.2" stroke-linecap="round"/>
+    <polygon points="31.89,9.66 31.86,10.25 30.02,7.63" fill="#000"/>
+  </g>
+
+  <!-- Stopwatch body -->
+  <g fill="#000">
+    <!-- outer ring as filled donut -->
+    <circle cx="18" cy="18" r="9.2"/>
+    <circle cx="18" cy="18" r="6.8" fill="#fff"/>
+    <!-- center cap -->
+    <circle cx="18" cy="18" r="1.6" />
+    <!-- ticks -->
+    <rect x="25.20" y="17.60" width="1.60" height="0.80" rx="0.40" ry="0.40" transform="rotate(0 26.00 18.00)" /><rect x="22.86" y="23.26" width="1.60" height="0.80" rx="0.40" ry="0.40" transform="rotate(45 23.66 23.66)" /><rect x="17.20" y="25.60" width="1.60" height="0.80" rx="0.40" ry="0.40" transform="rotate(90 18.00 26.00)" /><rect x="11.54" y="23.26" width="1.60" height="0.80" rx="0.40" ry="0.40" transform="rotate(135 12.34 23.66)" /><rect x="9.20" y="17.60" width="1.60" height="0.80" rx="0.40" ry="0.40" transform="rotate(180 10.00 18.00)" /><rect x="11.54" y="11.94" width="1.60" height="0.80" rx="0.40" ry="0.40" transform="rotate(225 12.34 12.34)" /><rect x="17.20" y="9.60" width="1.60" height="0.80" rx="0.40" ry="0.40" transform="rotate(270 18.00 10.00)" /><rect x="22.86" y="11.94" width="1.60" height="0.80" rx="0.40" ry="0.40" transform="rotate(315 23.66 12.34)" />
+    <!-- hand -->
+    <path d="M 17.15,18.53 L 20.20,22.28 20.88,21.86 18.85,17.47 Z" />
+    <!-- top buttons -->
+    <rect x="15.00" y="5.40" width="6.0" height="2.8" rx="1.0" ry="1.0" />
+    <rect x="22.78" y="16.90" width="3.6" height="2.4" rx="0.8" ry="0.8" transform="rotate(20 24.58 18.10)" />
+  </g>
+</svg>

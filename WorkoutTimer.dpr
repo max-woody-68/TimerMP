@@ -18,7 +18,8 @@ begin
   Application.Initialize;
 
   {$IFDEF ANDROID}
-    csWorkoutsXML := TPath.GetDocumentsPath + PathDelim +'Workouts.xml';
+    csWorkoutsXML    := TPath.GetDocumentsPath + PathDelim +'Workouts.xml';
+    csLastWorkoutXML := TPath.GetDocumentsPath + PathDelim +'LastWorkout.xml';
   {$ENDIF}
   {$IFDEF WIN64}
     csWorkoutsXML := 'Workouts.xml';
